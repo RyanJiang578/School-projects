@@ -1,4 +1,4 @@
-Ryan Jiang rj578
+Ryan Jiang
 Test plan: memtest, memgrind, and testing
 memgrind takes 5 tasks and does all 5 50 times and calculate the average time needed to complete 1 cycle of the 5 tasks
 task 1: malloc in increasingly large chunks then free them from largest to smallest

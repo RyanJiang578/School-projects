@@ -1,0 +1,28 @@
+Ryan Jiang rj578
+Test plan: memtest, memgrind, and testing
+memgrind takes 5 tasks and does all 5 50 times and calculate the average time needed to complete 1 cycle of the 5 tasks
+task 1: malloc in increasingly large chunks then free them from largest to smallest
+task 2: allocate 120 chunks with 8 byte payloads then free all of them
+task 3: malloc and free in random order and location
+task 4: split heap into 8 parts free from the middle out then place and large chunk and free it
+task 5: split heap into 5 parts free 2 of them and put 2 smaller chunks in their place
+testing takes a integer arguement 1-7 which should all produce an issue
+1:oversized pointer
+2:free item not malloced into heap
+3:free an already freed item
+4:free with a pointer that was moved out of place
+5:malloc but don't free it causing a memory leak
+6:mallocing an item of size 0
+7:freeing from a NULL pointer will not print out anything
+
+Design:Metadata is an 8 byte sized struct and everything is aligned to 8 bytes so the smallest possible chunk with is 16 bytes
+including the metadata.
+Malloc will check to see if the heap was intialized if not it will free also will do this
+leak detection registered at intialization
+malloc traverses list like a linked list until it finds a suitable chunk for the requested size and place it there
+gives remaining spcae between the malloced chunk and next chunk if deemed too small or 16 bytes
+available chunk is split into the allocated chunk and a freed chunk otherwise
+Free traverses list to search for the given pointer and if it finds one it will set it as free
+bad pointers will not be found by it leading it to report an error
+adjacent chunks will be checked to see if they can be coalesced
+When the program ends leak detector is triggered and it will traverse the heap to see if any chunk has their status set as unfreed, counts every unfreed chunk and their size and reports it

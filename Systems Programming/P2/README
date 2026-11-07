@@ -1,0 +1,7 @@
+Author: Ryan Jiang rj578
+takes directory open it and recrusively move through it to find file and other directorys
+reads and count them if they match the default suffix .txt or other provided suffix
+sorts by occurence count then alphabetically before printing using write()
+
+Testing: test directory containing multiple directorys and directory inside directory
+hidden files and directories textfiles with different suffix

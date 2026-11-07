@@ -1,4 +1,4 @@
-Author: Ryan Jiang rj578
+Author: Ryan Jiang
 takes directory open it and recrusively move through it to find file and other directorys
 reads and count them if they match the default suffix .txt or other provided suffix
 sorts by occurence count then alphabetically before printing using write()

@@ -1,0 +1,37 @@
+Author: Ryan Jiang
+
+Description
+
+This project implements a simple Unix shell in C supporting
+interactive and batch modes. Features include built-in commands
+(cd, pwd, which, exit), external command execution using fork()
+and execv(), input/output redirection (<, >, >>), multiple pipes,
+wildcard expansion, comments, and exit status reporting.
+
+Compilation
+
+Compile: make
+Run interactively: ./mysh
+Run batch file: ./mysh BatchTest.txt
+Run batch stdin: ./mysh < BatchTest.txt
+Clean: make clean
+
+Testing
+
+Testing was performed using both interactive and batch modes.
+
+1. Built-ins: Tested pwd, cd, which, and exit with valid and
+   invalid arguments.
+2. External commands: Tested echo, ls, true, false, and invalid
+   commands to verify execution and exit status reporting.
+3. Redirection: Tested <, >, >>, including built-in redirection
+   and file creation.
+4. Pipelines: Tested two and multiple commands, built-ins in
+   pipelines, and exit within a pipeline.
+5. Wildcards: Tested prefix, suffix, directory patterns, hidden
+   files, and unmatched patterns.
+6. Comments: Tested inline and full-line comments.
+7. Errors: Tested invalid pipes, missing filenames, and
+   continued execution after syntax errors.
+8. Batch mode: Tested file arguments, redirected stdin, and
+   commands without a final newline.

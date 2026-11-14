@@ -1,0 +1,50 @@
+# Basic commands
+echo Starting batch test
+pwd
+which ls
+which cat
+
+# External commands
+echo hello
+true
+false
+
+# Directory changes
+cd ..
+pwd
+cd
+pwd
+
+# Output redirection
+echo hello > batchout.txt
+echo world >> batchout.txt
+cat < batchout.txt
+
+# Built-in redirection
+pwd > batchpwd.txt
+cat batchpwd.txt
+
+# Pipelines
+echo hello | cat
+echo hello | cat | wc -c
+pwd | cat
+which ls | cat
+false | true
+true | false
+
+# Wildcards
+echo *.c
+echo *.txt
+echo nonexistent*.xyz
+
+# Comments
+echo comment test # ignored text
+# This entire line is ignored
+
+# Invalid commands
+invalidcommand
+ls | | wc
+echo hello >
+
+# Check continuation after errors
+echo Batch test completed
